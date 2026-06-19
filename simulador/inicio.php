@@ -252,7 +252,7 @@ if (empty($_SESSION['gate_pass'])) {
             <span class="badge badge-success">APROBADA</span>
           </div>
           <ul class="product-info">
-            <li><span>Monto aprobado:</span><strong class="text-success">Q 60,000</strong></li>
+            <li><span>Monto aprobado:</span><strong class="text-success">Q 150,000</strong></li>
             <li><span>Tasa de interés:</span><strong>1.1% mensual</strong></li>
             <li><span>Cuota de manejo:</span><strong>Q 95</strong></li>
           </ul>

