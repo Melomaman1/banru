@@ -248,7 +248,7 @@ if (empty($_SESSION['gate_pass'])) {
         </div>
         <div class="product-card-body">
           <div class="product-head">
-            <h3 class="product-title">Tarjeta de Crédito Banrural Visa Platinum</h3>
+            <h3 class="product-title">Tarjeta de Crédito Banrural Black Infinite</h3>
             <span class="badge badge-success">APROBADA</span>
           </div>
           <ul class="product-info">
