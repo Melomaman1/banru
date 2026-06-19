@@ -1,7 +1,7 @@
 <?php
 /**
  * og-image.php — Imagen OG (1200x630) para preview en redes sociales.
- * Tema: FinanzasNic — portal de finanzas personales Nicaragua.
+ * Tema: FinanzasHN — portal de finanzas personales Honduras.
  */
 
 header('Content-Type: image/png');
@@ -68,14 +68,14 @@ $light  = imagecolorallocate($im, 180, 200, 230);
 imagefilledrectangle($im, 0, 0, $W, 6, $teal);
 
 // Nombre del sitio
-bigText($im, 'FinanzasNic', 80, 60, 4.2, $white, true);
+bigText($im, 'FinanzasHN', 80, 60, 4.2, $white, true);
 
 // Línea separadora
 imagefilledrectangle($im, 80, 155, 320, 160, $teal);
 
 // Título principal
 bigText($im, 'Guias de Finanzas Personales', 80, 185, 5.8, $white, true);
-bigText($im, 'para Nicaragua', 80, 275, 5.8, $white, true);
+bigText($im, 'para Honduras', 80, 275, 5.8, $white, true);
 
 // Subtítulo
 bigText($im, 'Credito, ahorro, inversion y presupuesto.', 80, 370, 2.6, $light, false);
