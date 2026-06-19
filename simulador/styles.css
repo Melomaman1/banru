@@ -60,10 +60,12 @@ html, body {
 .logo { display: inline-flex; align-items: center; }
 .logo-img {
   display: block;
-  height: 84px;
+  height: 44px;
+  max-height: 100%;
   width: auto;
+  object-fit: contain;
 }
-.footer-logo-img { height: 84px; width: auto; }
+.footer-logo-img { height: 56px; width: auto; object-fit: contain; }
 
 .nav-desktop {
   display: none;
@@ -795,6 +797,8 @@ html, body {
 
   /* Header */
   .header-inner { height: 76px; }
+  .logo-img { height: 56px; }
+  .footer-logo-img { height: 72px; }
   .nav-desktop { display: flex; }
   .btn-login { display: inline-flex; }
   .menu-btn { display: none; }
