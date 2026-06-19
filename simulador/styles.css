@@ -47,9 +47,16 @@ html, body {
 .site-header {
   background: #fff;
   border-bottom: 1px solid #ececec;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+body { padding-top: 64px; }
+@media (min-width: 900px) {
+  body { padding-top: 76px; }
 }
 .header-inner {
   display: flex;
